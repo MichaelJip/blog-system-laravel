@@ -6,7 +6,8 @@
                 </h2>
             </a>
             <div class="text-base text-gray-500">
-                <a href="#">{{ $post['author'] }}</a> | {{ $post['date'] }}
+                <a href="/authors/{{ $post->author->username }}" class="hover:underline">{{ $post->author->name }}</a> |
+                {{ $post['date'] }}
             </div>
             <p class="my-4 font-light">
                 {{ Str::limit($post['body'], 100) }}

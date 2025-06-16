@@ -16,8 +16,15 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             // $table->string('author');
-            $table->unsignedBigInteger('author_id');
-            $table->foreign('author_id')->references('id')->on('users');
+
+            // Cara ini jika namanya beda, karena adanya users_id, 
+            // di ganti jadi author id bisa pake cara ini atau cara kedua
+
+            // $table->unsignedBigInteger('author_id');
+            // $table->foreign('author_id')->references('id')->on('users');
+
+            $table->foreignId('author_id')->constrained(table: 'users', indexName: 'posts_author_id');
+            $table->foreignId('category_id')->constrained(table: 'categories', indexName: 'posts_category_id');
             $table->string('date');
             $table->text('body');
             $table->timestamps();
